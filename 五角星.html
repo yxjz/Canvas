@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    window.onload = function () {
+        let cnv = document.getElementById('canvas');
+        let cxt = cnv.getContext('2d');
+        drawStar(cxt,30,130,50,50,100,1,'red','yellow');
+    };
+    
+//    r:半径
+//    R:直径
+//    x y：坐标
+//    rot；旋转角度
+//    borderWidth：边框大小
+//    borderStyle：边框颜色
+//    fillStyle：填充颜色
+
+    function drawStar( cxt , r , R , x , y , rot , borderWidth , borderStyle , fillStyle){
+        cxt.beginPath();
+        for( var i = 0 ; i < 5 ; i ++){
+            cxt.lineTo(Math.cos((18+72*i - rot)/180*Math.PI) * R + x ,- Math.sin((18+72*i - rot )/180*Math.PI) * R + y);
+            cxt.lineTo(Math.cos((54+72*i - rot)/180*Math.PI) * r + x ,- Math.sin((54+72*i - rot )/180*Math.PI) * r + y);
+        }
+        cxt.closePath();
+
+        cxt.lineWidth = borderWidth;
+        cxt.strokeStyle = borderStyle;
+        cxt.fillStyle = fillStyle;
+
+        cxt.fill();
+        cxt.stroke();
+    }
+
+
+
+</script>
+<body>
+    <canvas id="canvas"></canvas>
+
+</body>
+</html>

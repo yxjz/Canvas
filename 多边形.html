@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    window.onload = function () {
+        let cnv = document.getElementById('canvas');
+        let cxt = cnv.getContext('2d');
+        createPolygon(cxt,900,100,75,50);
+        cxt.fillStyle = 'red';
+        cxt.fill();
+
+    };
+//      n:表示n边形
+//      dx、dy：表示n边形中心坐标
+//        size：表示n边形的大小
+
+function createPolygon(cxt,n,dx,dy,size) {
+    cxt.beginPath();
+    let degree = (2*Math.PI)/n;
+    for(var i=0;i<n;i++){
+        let x = Math.cos(i*degree);
+        let y =  Math.sin(i*degree);
+        cxt.lineTo(x*size+dx,y*size+dy);
+
+    }
+    cxt.closePath();
+}
+
+
+
+</script>
+<body>
+    <canvas id="canvas"></canvas>
+
+</body>
+</html>
