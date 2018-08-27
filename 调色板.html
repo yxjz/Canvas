@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    window.onload = function () {
+        let cnv = document.getElementById('canvas');
+        let cxt = cnv.getContext('2d');
+
+        for(let i=0;i<2;i++){
+            for(let j=0;i<2;j++){
+//                cxt.fillStyle = `rgb(${Math.floor(255-42.5*i)},${Math.floor(255-42.5*j)},0)`
+                cxt.fillStyle ="rgb("+Math.floor(255-42.5*i)+","+Math.floor(255-42.5*j)+",0)";
+
+                cxt.fillRect(j*25,i*25,25,25);
+            }
+
+
+        }
+    };
+
+
+
+</script>
+<body>
+    <canvas id="canvas"></canvas>
+
+</body>
+</html>
