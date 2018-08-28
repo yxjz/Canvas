@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    window.onload = function () {
+        let cnv = document.getElementById('canvas');
+        let cxt = cnv.getContext('2d');
+        creatLeaf(cxt,4,cnv.width/2,cnv.height/2,5,80);
+        cxt.fillStyle = '#00FF99';
+        cxt.fill();
+    };
+
+
+
+
+    //          creatLeaf用于绘制n叶草
+    //        n：片数,大于2
+    //        dx，dy叶子中心的位置
+    //        size：叶子的大小
+    //        lenght：叶子的长度
+    function creatLeaf(cxt,n,dx,dy,size,length) {
+        cxt.beginPath();
+        cxt.moveTo(dx,dy+size);
+        var degree = 2*Math.PI/n;
+        for (var i=0;i<n+1;i++){
+//                计算控制点的坐标
+            var cx1 = Math.sin((i-1)*degree)*length+dx;
+            var cy1 = Math.cos((i-1)*degree)*length+dy;
+            var cx2 = Math.sin(i*degree)*length+dx;
+            var cy2 = Math.cos(i*degree)*length+dy;
+//                计算结束点的坐标
+            var x = Math.sin(i*degree)*size+dx;
+            var y = Math.cos(i*degree)*size+dy;
+            cxt.bezierCurveTo(cx1,cy1,cx2,cy2,x,y)
+        }
+        cxt.closePath();
+    }
+
+
+</script>
+<body>
+    <canvas id="canvas"></canvas>
+
+</body>
+</html>
