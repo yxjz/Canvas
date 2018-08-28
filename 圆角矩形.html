@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    window.onload = function () {
+        let cnv = document.getElementById('canvas');
+        let cxt = cnv.getContext('2d');
+        createRoundedRect(cxt,100,50,20,30,30);
+        cxt.fillStyle = "red";
+        cxt.fill();
+
+//        此函数用于绘制圆角矩形
+//        width,height:宽，高
+//        r；圆角半径
+//        offsetX,offsetY分别表示左上角顶点坐标
+        function createRoundedRect(cxt,width,height,r,offsetX,offsetY) {
+            cxt.beginPath();
+            cxt.moveTo(offsetX+r,offsetY);
+            cxt.lineTo(offsetX+width-r,offsetY);
+            cxt.arcTo(offsetX+width,offsetY,offsetY+width,offsetY+r,r);
+            cxt.lineTo(offsetX+width,offsetY+height-r);
+            cxt.arcTo(offsetX+width,offsetY+height,offsetX+width-r,offsetY+height,r);
+            cxt.lineTo(offsetX+r,offsetY+height);
+            cxt.arcTo(offsetX,offsetY+height,offsetX,offsetY+height-r,r);
+            cxt.lineTo(offsetX,offsetY+r);
+            cxt.arcTo(offsetX,offsetY,offsetX+r,offsetY,r);
+            cxt.closePath();
+        }
+
+    };
+
+
+
+</script>
+<body>
+    <canvas id="canvas"></canvas>
+
+</body>
+</html>
